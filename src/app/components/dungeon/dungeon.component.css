@@ -5,12 +5,12 @@
   border: 1px solid gray;
   margin-left: 20px;
 
-  background-image: url(/assets/images/dungeon.png);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.enemy-container {
-  width: 100%;
-  height: 100%;
-
-  background-image: url(/assets/images/slime.png)
+.slime {
+  color: greenyellow;
 }
