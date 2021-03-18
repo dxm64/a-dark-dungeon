@@ -10,16 +10,21 @@ export class GameComponent implements OnInit {
     'The room is dark.',
   ]
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   lightTorch(id) {
     this.logs.push('Torch lit. You can see in front of you.')
+
+    if(this.logs.length > 20) this.logs = this.logs.slice(this.logs.length - 20)
   }
 
   slash(id) {
-    this.logs.push('You slash your sword. You missed the monster.')
+    this.logs.push('You slash your sword, but you missed the monster.')
+
+    if(this.logs.length > 20) this.logs = this.logs.slice(this.logs.length - 20)
   }
 }

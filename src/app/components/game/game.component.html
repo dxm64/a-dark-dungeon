@@ -1,18 +1,17 @@
 <div class="wrapper">
   <div class="game-wrapper">
     <div class="log-container">
-      <div class="logLine" *ngFor="let log of logs.slice().reverse()">{{ log }}</div>
+      <div class="logLine" *ngFor="let log of logs.slice().reverse(); let first = first">
+        <span [class.highlightLogLine]="first">{{ log }}</span>
+      </div>
     </div>
     <div class="game-container">
       <div class="view-container">
         <div class="avatar-container">
           <div class="avatar"></div>
-          <div class="vitals-container">
-            <div class="vital-life"></div>
-            <div class="vital-mana"></div>
-          </div>
+          <app-vitals></app-vitals>
         </div>
-        <div class="player-view-container"></div>
+        <app-dungeon></app-dungeon>
       </div>
       <div>
         <app-button style="margin: 10px;" label="Light torch" animationSpeed="1000" (clicked)="lightTorch($event)"></app-button>
