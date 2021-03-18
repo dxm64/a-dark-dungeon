@@ -1,0 +1,38 @@
+.button {
+  width: 100px;
+  height: 20px;
+
+  border: 1px solid white;
+  color: white;
+  text-align: center;
+  padding: 5px;
+
+  position: relative;
+  cursor: pointer;
+}
+
+.button-animation {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: #545454;
+  z-index: 0;
+}
+
+.button-text {
+  position: relative;
+  z-index: 1000;
+  color: white;
+}
+
+.disabled {
+  border-color: #767676;
+}
+
+.disabled > .button-text {
+  color: #767676
+}
