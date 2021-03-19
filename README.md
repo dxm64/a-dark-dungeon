@@ -2,7 +2,7 @@
 
 Small, text-based RPG game written in Angular.
 
-Demo (coming soon)
+[Demo](http://dxm64.github.com/a-dark-dungeon)
 
 ## Run locally
 
