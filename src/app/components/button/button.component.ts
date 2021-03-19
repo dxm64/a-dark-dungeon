@@ -29,7 +29,7 @@ export class ButtonComponent implements OnInit {
     clearInterval(this.cooldownInterval);
     this.cooldownInterval = setInterval(() => {
       this.cooldown -= 0.01;
-      if(this.cooldown < 0.0) {
+      if (this.cooldown < 0.0) {
         this.cooldown = 0.0;
         this.stopCooldown();
       }
@@ -41,7 +41,7 @@ export class ButtonComponent implements OnInit {
   }
 
   click() {
-    if(!this.disabled && this.cooldown == 0.0) {
+    if (!this.disabled && this.cooldown == 0.0) {
       this.clicked.emit(this.id)
       this.startCooldown();
     }

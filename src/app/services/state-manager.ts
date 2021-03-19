@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Action } from '../models/action.model';
 
 export enum eActions {
   lightTorch = 0,
@@ -8,11 +9,12 @@ export enum eActions {
   pickMageClass = 3,
 
   slash = 4,
-  focus = 5,
+  stab = 5,
   fireball = 6,
+  focus = 7,
 }
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class StateManager {
   maxLogLines = 20;
   logs: string[] = [
@@ -38,7 +40,7 @@ export class StateManager {
     'rogue': { name: 'Rogue', color: '#4fbd4f' },
   }
 
-  actions: any[] = [
+  actions: Action[] = [
     { id: 'torch', label: 'Light torch', enabled: true, visible: true, cooldown: 1000 },
 
     { id: 'warrior', label: 'Warrior', enabled: true, visible: false, cooldown: 1000 },
@@ -46,8 +48,9 @@ export class StateManager {
     { id: 'mage', label: 'Mage', enabled: true, visible: false, cooldown: 1000 },
 
     { id: 'slash', label: 'Slash', enabled: true, visible: false, cooldown: 100 },
-    { id: 'focus', label: 'Focus', enabled: false, visible: false, cooldown: 10 },
+    { id: 'stab', label: 'Stab', enabled: true, visible: false, cooldown: 50 },
     { id: 'fireball', label: 'Fireball', enabled: false, visible: false, cooldown: 10 },
+    { id: 'focus', label: 'Focus', enabled: false, visible: false, cooldown: 10 },
   ]
 
   darkness = 1.0;
@@ -76,7 +79,7 @@ export class StateManager {
   }
 
   buttonPressed(id: string) {
-    switch(id) {
+    switch (id) {
       case 'warrior': {
         this._playerClass = 'warrior';
         this.level = 1;
@@ -91,7 +94,7 @@ export class StateManager {
         this._playerClass = 'rogue';
         this.level = 1;
         this.showClassChoice(false);
-        this.actions[eActions.slash].visible = true;
+        this.actions[eActions.stab].visible = true;
         this.actions[eActions.focus].visible = true;
 
         this.writeLog('You are thief, a swift and deadly assassin.')
@@ -100,8 +103,10 @@ export class StateManager {
         this._playerClass = 'mage';
         this.level = 1;
         this.showClassChoice(false);
-        this.actions[eActions.slash].visible = true;
+        this.actions[eActions.fireball].visible = true;
+        this.actions[eActions.fireball].enabled = true;
         this.actions[eActions.focus].visible = true;
+        this.actions[eActions.focus].enabled = true;
 
         this.writeLog('You are a powerful magical user, you can sense the mana passing through your nerves.')
       } break;
@@ -112,7 +117,7 @@ export class StateManager {
         clearInterval(this.darknessInterval);
         this.darknessInterval = setInterval(() => {
           this.darkness += 0.001;
-          if(this.darkness > 1.0) {
+          if (this.darkness > 1.0) {
             this.darkness = 1.0;
             clearInterval(this.darknessInterval);
 
@@ -122,7 +127,7 @@ export class StateManager {
 
         this.writeLog('Torch lit. You can see in front of you.');
 
-        if(this.firstTorch) {
+        if (this.firstTorch) {
           this.firstTorch = false;
 
           setTimeout(() => {
@@ -134,13 +139,16 @@ export class StateManager {
       case 'slash': {
         this.writeLog('You slash your sword, but you only hit the air.');
       } break;
+      case 'stab': {
+        this.writeLog('You stab your dagger, but nothing\'s there.');
+      } break;
       case 'focus': {
         this.mana = Math.min(this.mana + 10, this.maxMana);
 
         this.writeLog('You focus your magical energy.');
       } break;
       case 'fireball': {
-        if(this.mana - 20 >= 0) {
+        if (this.mana - 20 >= 0) {
           this.mana -= 20;
           this.writeLog('You shoot a bright fireball, it hits nothing.');
         } else {
@@ -162,6 +170,6 @@ export class StateManager {
   writeLog(message: string) {
     this.logs.push(message)
 
-    if(this.logs.length > this.maxLogLines) this.logs = this.logs.slice(this.logs.length - this.maxLogLines)
+    if (this.logs.length > this.maxLogLines) this.logs = this.logs.slice(this.logs.length - this.maxLogLines)
   }
 }
