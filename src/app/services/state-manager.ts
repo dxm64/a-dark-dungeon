@@ -1,5 +1,17 @@
 import { Injectable } from '@angular/core';
 
+export enum eActions {
+  lightTorch = 0,
+
+  pickWarriorClass = 1,
+  pickRogueClass = 2,
+  pickMageClass = 3,
+
+  slash = 4,
+  focus = 5,
+  fireball = 6,
+}
+
 @Injectable({providedIn: 'root'})
 export class StateManager {
   maxLogLines = 20;
@@ -26,15 +38,22 @@ export class StateManager {
     'rogue': { name: 'Rogue', color: '#4fbd4f' },
   }
 
-  actions = [
+  actions: any[] = [
     { id: 'torch', label: 'Light torch', enabled: true, visible: true, cooldown: 1000 },
-    { id: 'slash', label: 'Slash', enabled: true, visible: true, cooldown: 100 },
-    { id: 'focus', label: 'Focus', enabled: true, visible: true, cooldown: 10 },
-    { id: 'fireball', label: 'Fireball', enabled: true, visible: true, cooldown: 10 },
+
+    { id: 'warrior', label: 'Warrior', enabled: true, visible: false, cooldown: 1000 },
+    { id: 'rogue', label: 'Rogue', enabled: true, visible: false, cooldown: 1000 },
+    { id: 'mage', label: 'Mage', enabled: true, visible: false, cooldown: 1000 },
+
+    { id: 'slash', label: 'Slash', enabled: true, visible: false, cooldown: 100 },
+    { id: 'focus', label: 'Focus', enabled: false, visible: false, cooldown: 10 },
+    { id: 'fireball', label: 'Fireball', enabled: false, visible: false, cooldown: 10 },
   ]
 
   darkness = 1.0;
   darknessInterval: any;
+
+  firstTorch = true;
 
   get playerClass() {
     return this.classes[this._playerClass];
@@ -53,10 +72,40 @@ export class StateManager {
   }
 
   constructor() {
+    console.log(this.actions)
   }
 
   buttonPressed(id: string) {
     switch(id) {
+      case 'warrior': {
+        this._playerClass = 'warrior';
+        this.level = 1;
+        this.showClassChoice(false);
+        console.log(this.actions[eActions.slash], eActions.slash)
+        this.actions[eActions.slash].visible = true;
+        this.actions[eActions.focus].visible = true;
+
+        this.writeLog('You are fierce warrior, ready to die in battle and take down a whole army with you.')
+      } break;
+      case 'rogue': {
+        this._playerClass = 'rogue';
+        this.level = 1;
+        this.showClassChoice(false);
+        this.actions[eActions.slash].visible = true;
+        this.actions[eActions.focus].visible = true;
+
+        this.writeLog('You are thief, a swift and deadly assassin.')
+      } break;
+      case 'mage': {
+        this._playerClass = 'mage';
+        this.level = 1;
+        this.showClassChoice(false);
+        this.actions[eActions.slash].visible = true;
+        this.actions[eActions.focus].visible = true;
+
+        this.writeLog('You are a powerful magical user, you can sense the mana passing through your nerves.')
+      } break;
+
       case 'torch': {
         this.darkness = 0.0;
 
@@ -72,6 +121,15 @@ export class StateManager {
         }, 10)
 
         this.writeLog('Torch lit. You can see in front of you.');
+
+        if(this.firstTorch) {
+          this.firstTorch = false;
+
+          setTimeout(() => {
+            this.writeLog('You are trying to remember who you are...');
+            this.showClassChoice(true);
+          }, 1000);
+        }
       } break;
       case 'slash': {
         this.writeLog('You slash your sword, but you only hit the air.');
@@ -93,6 +151,12 @@ export class StateManager {
         this.writeLog('This button does nothing.');
       } break;
     }
+  }
+
+  showClassChoice(visible: boolean) {
+    this.actions[1].visible = visible;
+    this.actions[2].visible = visible;
+    this.actions[3].visible = visible;
   }
 
   writeLog(message: string) {

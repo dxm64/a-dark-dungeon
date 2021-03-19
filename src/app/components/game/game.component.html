@@ -5,10 +5,10 @@
       <div class="view-container">
         <div class="avatar-container">
           <div class="avatar">
-            <div style="color: white">LVL. {{ state.level ? state.level : '?' }}</div>
-            <div [style.color]="state.playerClass.color">{{ state.playerClass.name }}</div>
+            <div *ngIf="!state.firstTorch" style="color: white">LVL. {{ state.level ? state.level : '?' }}</div>
+            <div *ngIf="!state.firstTorch" [style.color]="state.playerClass.color">{{ state.playerClass.name }}</div>
           </div>
-          <app-vitals></app-vitals>
+          <app-vitals *ngIf="!state.firstTorch"></app-vitals>
         </div>
         <app-dungeon></app-dungeon>
       </div>
