@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateManager } from 'src/app/services/state-manager';
 
 @Component({
   selector: 'app-vitals',
@@ -6,11 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['vitals.component.css']
 })
 export class VitalsComponent implements OnInit {
-  health = 0.75
-  mana = 0.5
-  stamina = 0.3
 
-  constructor() { }
+  constructor(public state: StateManager) { }
 
   ngOnInit() { }
 }

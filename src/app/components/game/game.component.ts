@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateManager } from 'src/app/services/state-manager';
 
 @Component({
   selector: 'app-game',
@@ -6,28 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['game.component.css']
 })
 export class GameComponent implements OnInit {
-  maxLogLines = 20;
-  logs: string[] = [
-    'The room is dark.',
-  ]
 
-  constructor() {
+  constructor(public state: StateManager) {
   }
 
   ngOnInit() {
   }
 
   lightTorch(id) {
-    this.log('Torch lit. You can see in front of you.')
+    this.state.writeLog('Torch lit. You can see in front of you.')
   }
 
   slash(id) {
-    this.log('You slash your sword, but you missed the monster.')
-  }
-
-  log(message: string) {
-    this.logs.push(message)
-
-    if(this.logs.length > this.maxLogLines) this.logs = this.logs.slice(this.logs.length - this.maxLogLines)
+    this.state.writeLog('You slash your sword, but you missed the monster.')
   }
 }

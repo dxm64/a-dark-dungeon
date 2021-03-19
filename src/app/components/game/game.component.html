@@ -1,12 +1,12 @@
 <div class="wrapper">
   <div class="game-wrapper">
-    <app-log [logs]="logs"></app-log>
+    <app-log [logs]="state.logs"></app-log>
     <div class="game-container">
       <div class="view-container">
         <div class="avatar-container">
           <div class="avatar">
-            <div style="color: white">LVL. 2</div>
-            <div style="color: orange">Warrior</div>
+            <div style="color: white">LVL. {{ state.level ? state.level : '?' }}</div>
+            <div [style.color]="state.playerClass.color">{{ state.playerClass.name }}</div>
           </div>
           <app-vitals></app-vitals>
         </div>
