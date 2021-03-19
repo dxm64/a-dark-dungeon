@@ -7,7 +7,7 @@ export class Rogue extends Action {
     state.level = 1;
     state.showClassChoice(false);
     state.actions[eActions.stab].visible = true;
-    state.actions[eActions.focus].visible = true;
+    state.actions[eActions.rest].visible = true;
 
     state.writeLog('You are thief, a swift and deadly assassin.')
   }

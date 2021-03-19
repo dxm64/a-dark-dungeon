@@ -8,7 +8,7 @@ export class Warrior extends Action {
     state.showClassChoice(false);
     console.log(state.actions[eActions.slash], eActions.slash)
     state.actions[eActions.slash].visible = true;
-    state.actions[eActions.focus].visible = true;
+    state.actions[eActions.rest].visible = true;
 
     state.writeLog('You are fierce warrior, ready to die in battle and take down a whole army with you.')
   }

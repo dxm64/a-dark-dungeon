@@ -3,6 +3,7 @@ import { Action } from '../actions/action';
 import { Fireball } from '../actions/fireball.action';
 import { Focus } from '../actions/focus.action';
 import { Mage } from '../actions/mage.action';
+import { Rest } from '../actions/rest.action';
 import { Rogue } from '../actions/rogue.action';
 import { Slash } from '../actions/slash.action';
 import { Stab } from '../actions/stab.action';
@@ -20,6 +21,7 @@ export enum eActions {
   stab = 5,
   fireball = 6,
   focus = 7,
+  rest = 8,
 }
 
 @Injectable({ providedIn: 'root' })
@@ -59,6 +61,7 @@ export class StateManager {
     new Stab({ id: 'stab', label: 'Stab', enabled: true, visible: false, cooldown: 50 }),
     new Fireball({ id: 'fireball', label: 'Fireball', enabled: false, visible: false, cooldown: 10 }),
     new Focus({ id: 'focus', label: 'Focus', enabled: false, visible: false, cooldown: 10 }),
+    new Rest({ id: 'rest', label: 'Rest', enabled: true, visible: false, cooldown: 50 }),
   ]
 
   darkness = 1.0;
