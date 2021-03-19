@@ -14,23 +14,9 @@
   height: 100vh;
 }
 
-.log-container {
-  flex: 1;
-
-  color: gray;
-}
-
 .game-container {
   margin-left: 10px;
   flex: 2;
-}
-
-.logLine {
-  padding: 5px;
-}
-
-.highlightLogLine {
-  color: white;
 }
 
 .view-container {

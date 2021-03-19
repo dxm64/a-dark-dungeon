@@ -1,10 +1,6 @@
 <div class="wrapper">
   <div class="game-wrapper">
-    <div class="log-container">
-      <div class="logLine" *ngFor="let log of logs.slice().reverse(); let first = first">
-        <span [class.highlightLogLine]="first">{{ log }}</span>
-      </div>
-    </div>
+    <app-log [logs]="logs"></app-log>
     <div class="game-container">
       <div class="view-container">
         <div class="avatar-container">

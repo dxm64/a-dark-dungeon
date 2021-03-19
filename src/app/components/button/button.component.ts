@@ -9,10 +9,10 @@ export class ButtonComponent implements OnInit {
   @Input() id = 'Unknown'
   @Input() label = 'Label'
 
-  @Input() animationSpeed = 100;
+  @Input() cooldownSpeed = 100;
 
-  animation = 0.0
-  animInterval: any;
+  cooldown = 0.0
+  cooldownInterval: any;
 
   @Input() disabled = false;
 
@@ -23,27 +23,27 @@ export class ButtonComponent implements OnInit {
   ngOnInit() {
   }
 
-  startAnim() {
-    this.animation = 1.0;
+  startCooldown() {
+    this.cooldown = 1.0;
 
-    clearInterval(this.animInterval);
-    this.animInterval = setInterval(() => {
-      this.animation -= 0.01;
-      if(this.animation < 0.0) {
-        this.animation = 0.0;
-        this.stopAnim();
+    clearInterval(this.cooldownInterval);
+    this.cooldownInterval = setInterval(() => {
+      this.cooldown -= 0.01;
+      if(this.cooldown < 0.0) {
+        this.cooldown = 0.0;
+        this.stopCooldown();
       }
-    }, 1000 / this.animationSpeed);
+    }, 1000 / this.cooldownSpeed);
   }
 
-  stopAnim() {
-    clearInterval(this.animInterval);
+  stopCooldown() {
+    clearInterval(this.cooldownInterval);
   }
 
   click() {
-    if(!this.disabled && this.animation == 0.0) {
+    if(!this.disabled && this.cooldown == 0.0) {
       this.clicked.emit(this.id)
-      this.startAnim();
+      this.startCooldown();
     }
   }
 

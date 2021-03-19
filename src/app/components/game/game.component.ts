@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['game.component.css']
 })
 export class GameComponent implements OnInit {
+  maxLogLines = 20;
   logs: string[] = [
     'The room is dark.',
   ]
@@ -17,14 +18,16 @@ export class GameComponent implements OnInit {
   }
 
   lightTorch(id) {
-    this.logs.push('Torch lit. You can see in front of you.')
-
-    if(this.logs.length > 20) this.logs = this.logs.slice(this.logs.length - 20)
+    this.log('Torch lit. You can see in front of you.')
   }
 
   slash(id) {
-    this.logs.push('You slash your sword, but you missed the monster.')
+    this.log('You slash your sword, but you missed the monster.')
+  }
 
-    if(this.logs.length > 20) this.logs = this.logs.slice(this.logs.length - 20)
+  log(message: string) {
+    this.logs.push(message)
+
+    if(this.logs.length > this.maxLogLines) this.logs = this.logs.slice(this.logs.length - this.maxLogLines)
   }
 }
