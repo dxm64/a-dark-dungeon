@@ -13,12 +13,4 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  lightTorch(id) {
-    this.state.writeLog('Torch lit. You can see in front of you.')
-  }
-
-  slash(id) {
-    this.state.writeLog('You slash your sword, but you missed the monster.')
-  }
 }

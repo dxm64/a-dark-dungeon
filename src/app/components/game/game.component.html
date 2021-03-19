@@ -13,9 +13,17 @@
         <app-dungeon></app-dungeon>
       </div>
       <div>
-        <app-button style="margin: 10px;" label="Light torch" animationSpeed="1000" (clicked)="lightTorch($event)"></app-button>
-        <app-button style="margin: 10px;" label="Slash" animationSpeed="100" (clicked)="slash($event)"></app-button>
-        <app-button style="margin: 10px;" label="Focus" animationSpeed="10" [disabled]="true"></app-button>
+        <ng-container *ngFor="let action of state.actions">
+          <app-button
+            *ngIf="action.visible"
+            style="margin: 60px;"
+            [label]="action.label"
+            [cooldownSpeed]="action.cooldown"
+            [disabled]="!action.enabled"
+            (clicked)="state.buttonPressed(action.id)">
+          </app-button>
+        </ng-container>
+
       </div>
     </div>
   </div>

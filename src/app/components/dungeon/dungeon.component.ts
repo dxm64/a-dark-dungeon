@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateManager } from 'src/app/services/state-manager';
 
 @Component({
   selector: 'app-dungeon',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['dungeon.component.css']
 })
 export class DungeonComponent implements OnInit {
-  constructor() { }
+  constructor(public state: StateManager) { }
 
   ngOnInit() { }
 }
