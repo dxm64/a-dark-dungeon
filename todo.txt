@@ -1,0 +1,48 @@
+Actual TASKS:
+- hacktimer - so game can run in background
+- Tweens instead of intervals
+- Cooldown in milliseconds, rather than "speed"
+- Save/Load game state from localStorage
+- Save format as encoded base64 binary
+
+Possible enemies:
+- Slime (green), variants: Big
+- Undead (dark purple), low visibility, variants: Undead Soldier/Mage
+- Bat (bright purple), evasive, noisy
+- Cockroach (dark gray), harmless, worthless
+- Rat (brown), gives rat meat, slow, weak attack, variants: Big rat, Undead Rat
+- Spider (dark brown), gives web, jaws, fur, can be poisonious
+- Goblin (dark green), attracted to magical objects, can steal from you
+
+Possible items:
+- Swords (short, long, range influences how many get hit if multiple, dmg)
+- Bows (shoots arrows, limited in quantity)
+- Spells
+	- fireball
+	- ice (enemies freeze, become light blue text)
+	- poison gas (FoE, good for multiple, enemies flash purple?)
+	- light spell (longer than torch)
+- Throw dagger (limited by how many you have)
+- Potions (health, mana, stamina, higher dmg, faster cooldown, faster regen, see in the dark)
+
+How players progress:
+- Gain levels to get 'Go up stairs' actions
+- Rooms are divided by level and difficulty, they can stick around as long as they want and farm
+- Random encounters with various enemies
+- Random events?
+- Sometimes you need a key, or you need to construct an object, or kill a boss
+- Boss fights: Enemies come in waves, then you fight the big fella
+
+Ideas for a dark dungeon:
+- Visibility - level of transparency over dungeon viewer (light torch resets)
+	- Some monsters are harder too see in dark (low contrast)
+- Stamina - basic currency of the game, actions take effort + time
+- Classes:
+	- Warrior (+hp, +dmg)
+	- Mage (+mn, faster access to Focus, spells, magic)
+	- Rogue (+st, time advantage, bigger inv)
+- Inventory - monsters will drop all kinds of items
+- Wizard - 50% chance of miss with slashing
+- Rogue - 0.25% chance of missing, but faster cooldown
+- Warrior - 0.05% chance of miss with slash, higher damage
+- Combat - if enemy is hit, enemy text flashes white-red-white-red-normal color
