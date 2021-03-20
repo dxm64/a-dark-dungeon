@@ -33,6 +33,7 @@ export class StateManager {
 
   mana = 100;
   maxMana = 100;
+  manaReplenishRate = 0.01;
 
   stamina = 100;
   maxStamina = 100;
@@ -101,6 +102,7 @@ export class StateManager {
       this._tween.processQueue();
 
       this.stamina = Math.min(this.stamina + this.staminaReplenishRate, this.maxStamina);
+      this.mana = Math.min(this.mana + this.manaReplenishRate, this.maxMana)
     }, framerate)
 
     setInterval(() => {
