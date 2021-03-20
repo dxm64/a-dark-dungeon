@@ -1,5 +1,6 @@
 import { Action } from "./action";
 import { StateManager } from "../services/state-manager";
+import { Enemy } from "../enemies/enemy";
 
 export class Fireball extends Action {
   constructor() {
@@ -15,7 +16,15 @@ export class Fireball extends Action {
   execute(state: StateManager) {
     if (state.mana - 20 >= 0) {
       state.mana -= 20;
-      state.writeLog('You shoot a bright fireball, it hits nothing.');
+
+      if(state.darkness != 1.0 && state.enemies.length > 0) {
+        const hit: Enemy = state.enemies[Math.floor(Math.random() * state.enemies.length)];
+
+        hit.takeDamage(state, 20);
+        state.writeLog(`You shoot a bright fireball, it hits a ${hit.name}.`)
+      } else {
+        state.writeLog('You shoot a bright fireball, it hits nothing.');
+      }
     } else {
       state.writeLog('A tiny flame is visible but it quickly fizzles out. You are drained of magic.');
     }

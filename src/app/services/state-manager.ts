@@ -32,6 +32,7 @@ export class StateManager {
 
   stamina = 100;
   maxStamina = 100;
+  staminaReplenishRate = 0.01;
 
   level = 0;
   _playerClass: string = 'unknown';
@@ -91,6 +92,8 @@ export class StateManager {
     const framerate = 1000 / 60;
     setInterval(() => {
       this._tween.processQueue();
+
+      this.stamina = Math.min(this.stamina + this.staminaReplenishRate, this.maxStamina);
     }, framerate)
   }
 
