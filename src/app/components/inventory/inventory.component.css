@@ -1,0 +1,81 @@
+.game-inventory {
+  width: 200px;
+  height: 500px;
+
+  margin-top: 20px;
+  border: 1px solid white;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.game-inventory-tab-container {
+  display: flex;
+}
+
+.game-inventory-tab {
+  flex-grow: 1;
+  height: 20px;
+
+  border: 1px solid grey;
+  color: lightgrey;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.game-inventory-tab.active {
+  color: white;
+  border-color: white;
+}
+
+.game-inventory-stat {
+  flex-grow: 1;
+  height: 20px;
+
+  color: white;
+
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.game-inventory-stat > .between {
+  flex-grow: 1;
+}
+
+.game-inventory-item {
+  flex-grow: 1;
+  height: 20px;
+
+  color: white;
+
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.game-inventory-item > .between {
+  flex-grow: 1;
+}
+
+.game-inventory-item-use {
+  width: 40px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  border: 1px solid white;
+
+  margin-left: 10px;
+
+  cursor: pointer;
+}

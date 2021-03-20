@@ -40,12 +40,10 @@
   align-items: center;
 }
 
-.player-view-container {
-  width: 200px;
-  height: 200px;
+.game-controls {
+  display: flex;
+}
 
-  border: 1px solid gray;
-  margin-left: 20px;
-
-  background-image: url(/assets/images/dungeon.png);
+.game-actions {
+  width: 222px;
 }

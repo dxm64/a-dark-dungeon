@@ -12,18 +12,20 @@
         </div>
         <app-dungeon></app-dungeon>
       </div>
-      <div>
-        <ng-container *ngFor="let action of state.actions">
-          <app-button
-            *ngIf="action.visible"
-            style="margin: 60px;"
-            [label]="action.label"
-            [cooldownTime]="action.cooldown"
-            [disabled]="!action.enabled"
-            (clicked)="state.buttonPressed(action.id)">
-          </app-button>
-        </ng-container>
-
+      <div class="game-controls">
+        <div class="game-actions">
+          <ng-container *ngFor="let action of state.actions">
+            <app-button
+              *ngIf="action.visible"
+              style="margin: 60px;"
+              [label]="action.label"
+              [cooldownTime]="action.cooldown"
+              [disabled]="!action.enabled"
+              (clicked)="state.buttonPressed(action.id)">
+            </app-button>
+          </ng-container>
+        </div>
+        <app-inventory></app-inventory>
       </div>
     </div>
   </div>

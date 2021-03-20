@@ -1,0 +1,35 @@
+<div class="game-inventory">
+  <div class="game-inventory-tab-container">
+    <div *ngFor="let tab of tabs; let index = index"
+      class="game-inventory-tab noselect"
+      [class.active]="index == activeTab"
+      (click)="changeTab(index)">
+      {{ tab }}
+    </div>
+  </div>
+  <div>
+    <ng-container *ngIf="activeTab == 0">
+      <div class="game-inventory-stat" *ngFor="let stat of stats">
+        <span>{{ stat.label }}</span>
+        <span class="between"></span>
+        <span>{{ stat.value }}</span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="activeTab == 1">
+      <div class="game-inventory-item" *ngFor="let item of items">
+        <span>{{ item.label }}</span>
+        <span class="between"></span>
+        <span>{{ item.quantity }}</span>
+        <div class="game-inventory-item-use">USE</div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="activeTab == 2">
+      <div class="game-inventory-item" *ngFor="let spell of spells">
+        <span>{{ spell.label }}</span>
+        <span class="between"></span>
+        <span>{{ spell.cost }}</span>
+        <div class="game-inventory-item-use">CAST</div>
+      </div>
+    </ng-container>
+  </div>
+</div>
