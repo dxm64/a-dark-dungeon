@@ -110,7 +110,7 @@ export class StateManager {
 
         this.enemies.push(enemy);
 
-        if(this.darkness == 0.0) {
+        if(this.darkness == 1.0) {
           this.writeLog('You hear a noise in the dark.');
         } else {
           this.writeLog(`${enemy.name} appears in front of you.`);
