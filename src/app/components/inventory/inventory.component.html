@@ -1,4 +1,4 @@
-<div class="game-inventory">
+<div class="game-inventory noselect">
   <div class="game-inventory-tab-container">
     <div *ngFor="let tab of tabs; let index = index"
       class="game-inventory-tab noselect"
@@ -27,7 +27,6 @@
       <div class="game-inventory-item" *ngFor="let spell of spells">
         <span>{{ spell.label }}</span>
         <span class="between"></span>
-        <span>{{ spell.cost }}</span>
         <div class="game-inventory-item-use">CAST</div>
       </div>
     </ng-container>
