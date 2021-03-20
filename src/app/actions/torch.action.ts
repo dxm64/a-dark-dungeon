@@ -16,7 +16,7 @@ export class Torch extends Action {
       }
     }, 10)
 
-    state.writeLog('Torch lit. You can see in front of you.');
+    state.writeLog('Torch lit. You can see in front of you.', '#edde93');
 
     if (state.firstTorch) {
       state.firstTorch = false;

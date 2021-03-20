@@ -12,7 +12,7 @@ export class Mage extends Action {
     state.actions[eAction.focus].visible = true;
     state.actions[eAction.focus].enabled = true;
 
-    state.writeLog('You are a powerful magical user, you can sense the mana passing through your nerves.')
+    state.writeLog('You are a powerful magical user, you can sense the mana passing through your nerves.', state.classes['mage'].color)
   }
 
 }

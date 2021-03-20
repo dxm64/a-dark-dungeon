@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Log } from 'src/app/models/log.model';
 
 @Component({
   selector: 'app-log',
@@ -6,9 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['log.component.css']
 })
 export class LogComponent implements OnInit {
-  @Input() logs: string[] = [
-    'The room is dark.',
-  ]
+  @Input() logs: Log[] = [];
 
   constructor() { }
 

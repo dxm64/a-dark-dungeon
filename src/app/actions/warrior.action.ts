@@ -11,7 +11,7 @@ export class Warrior extends Action {
     state.actions[eAction.slash].visible = true;
     state.actions[eAction.rest].visible = true;
 
-    state.writeLog('You are fierce warrior, ready to die in battle and take down a whole army with you.')
+    state.writeLog('You are fierce warrior, ready to die in battle and take down a whole army with you.', state.classes['warrior'].color)
   }
 
 }

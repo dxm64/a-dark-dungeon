@@ -1,3 +1,3 @@
-<div class="logLine" *ngFor="let log of logs.slice().reverse(); let first = first">
-  <span [class.highlightLogLine]="first">{{ log }}</span>
+<div class="logLine" *ngFor="let log of logs; let first = first">
+  <span [class.highlightLogLine]="!log.color && first" [style.color]="first ? log.color : ''">{{ log.message }}</span>
 </div>

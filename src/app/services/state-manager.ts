@@ -10,13 +10,14 @@ import { Stab } from '../actions/stab.action';
 import { Torch } from '../actions/torch.action';
 import { Warrior } from '../actions/warrior.action';
 import { eAction } from '../enums/action.enum';
+import { Log } from '../models/log.model';
 import { TweeningService } from './tween.service';
 
 @Injectable({ providedIn: 'root' })
 export class StateManager {
   maxLogLines = 20;
-  logs: string[] = [
-    'The room is dark.',
+  logs: Log[] = [
+    { message: 'The room is dark.', color: 'gray' },
   ]
 
   health = 75;
@@ -97,9 +98,9 @@ export class StateManager {
     this.actions[eAction.pickMageClass].visible = visible;
   }
 
-  writeLog(message: string) {
-    this.logs.push(message)
+  writeLog(message: string, color?: string) {
+    this.logs.unshift({ message, color })
 
-    if (this.logs.length > this.maxLogLines) this.logs = this.logs.slice(this.logs.length - this.maxLogLines)
+    if (this.logs.length > this.maxLogLines) this.logs = this.logs.slice(0, this.maxLogLines)
   }
 }
