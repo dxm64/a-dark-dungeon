@@ -2,6 +2,16 @@ import { Action } from "./action";
 import { StateManager } from "../services/state-manager";
 
 export class Torch extends Action {
+  constructor() {
+    super();
+
+    this.id = 'torch';
+    this.label = 'Light torch',
+    this.enabled = true;
+    this.visible = true;
+    this.cooldown = 300;
+  }
+
   execute(state: StateManager) {
     state.darkness = 0.0;
     state.writeLog('Torch lit. You can see in front of you.', '#edde93');

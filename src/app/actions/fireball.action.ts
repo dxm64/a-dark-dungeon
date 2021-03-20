@@ -2,6 +2,16 @@ import { Action } from "./action";
 import { StateManager } from "../services/state-manager";
 
 export class Fireball extends Action {
+  constructor() {
+    super();
+
+    this.id = 'fireball';
+    this.label = 'Fireball';
+    this.enabled = false;
+    this.visible = false;
+    this.cooldown = 3000;
+  }
+
   execute(state: StateManager) {
     if (state.mana - 20 >= 0) {
       state.mana -= 20;

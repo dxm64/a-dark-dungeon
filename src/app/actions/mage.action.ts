@@ -3,6 +3,16 @@ import { eAction } from '../enums/action.enum'
 import { StateManager } from "../services/state-manager";
 
 export class Mage extends Action {
+  constructor() {
+    super();
+
+    this.id = 'mage';
+    this.label = 'Mage';
+    this.enabled = true;
+    this.visible = false;
+    this.cooldown = 1000;
+  }
+
   execute(state: StateManager) {
     state._playerClass = 'mage';
     state.level = 1;

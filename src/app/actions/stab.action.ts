@@ -2,6 +2,16 @@ import { StateManager } from "../services/state-manager";
 import { Action } from "./action";
 
 export class Stab extends Action {
+  constructor() {
+    super();
+
+    this.id = 'stab';
+    this.label = 'Stab';
+    this.enabled = true;
+    this.visible = false;
+    this.cooldown = 3000;
+  }
+
   execute(state: StateManager) {
     if (state.stamina - 10 >= 0) {
       state.stamina -= 10;

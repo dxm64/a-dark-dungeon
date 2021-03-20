@@ -7,11 +7,11 @@ export abstract class Action {
   visible: boolean;
   cooldown: number;
 
-  constructor(obj: any) {
-    Object.keys(obj).forEach(key => {
-      this[key] = obj[key];
-    })
-  }
+  // constructor(obj: any) {
+  //   Object.keys(obj).forEach(key => {
+  //     this[key] = obj[key];
+  //   })
+  // }
 
   abstract execute(state: StateManager);
 }

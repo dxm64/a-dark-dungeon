@@ -9,6 +9,8 @@ import { Slash } from '../actions/slash.action';
 import { Stab } from '../actions/stab.action';
 import { Torch } from '../actions/torch.action';
 import { Warrior } from '../actions/warrior.action';
+import { Enemy } from '../enemies/enemy';
+import Slime from '../enemies/slime.enemy';
 import { eAction } from '../enums/action.enum';
 import { Log } from '../models/log.model';
 import Tween from '../models/tween.model';
@@ -22,13 +24,13 @@ export class StateManager {
     { message: 'The room is dark.', color: 'gray' },
   ]
 
-  health = 75;
+  health = 100;
   maxHealth = 100;
 
-  mana = 50;
+  mana = 100;
   maxMana = 100;
 
-  stamina = 30;
+  stamina = 100;
   maxStamina = 100;
 
   level = 0;
@@ -42,17 +44,23 @@ export class StateManager {
   }
 
   actions: Action[] = [
-    new Torch({ id: 'torch', label: 'Light torch', enabled: true, visible: true, cooldown: 300 }),
+    new Torch(),
 
-    new Warrior({ id: 'warrior', label: 'Warrior', enabled: true, visible: false, cooldown: 1000 }),
-    new Rogue({ id: 'rogue', label: 'Rogue', enabled: true, visible: false, cooldown: 1000 }),
-    new Mage({ id: 'mage', label: 'Mage', enabled: true, visible: false, cooldown: 1000 }),
+    new Warrior(),
+    new Rogue(),
+    new Mage(),
 
-    new Slash({ id: 'slash', label: 'Slash', enabled: true, visible: false, cooldown: 3000 }),
-    new Stab({ id: 'stab', label: 'Stab', enabled: true, visible: false, cooldown: 3000 }),
-    new Fireball({ id: 'fireball', label: 'Fireball', enabled: false, visible: false, cooldown: 3000 }),
-    new Focus({ id: 'focus', label: 'Focus', enabled: false, visible: false, cooldown: 5000 }),
-    new Rest({ id: 'rest', label: 'Rest', enabled: true, visible: false, cooldown: 5000 }),
+    new Slash(),
+    new Stab(),
+    new Fireball(),
+    new Focus(),
+    new Rest(),
+  ]
+
+  enemies: Enemy[] = [
+    new Slime(),
+    new Slime(),
+    new Slime(),
   ]
 
   darkness = 1.0;

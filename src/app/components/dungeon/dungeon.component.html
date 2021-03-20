@@ -1,7 +1,5 @@
 <div class="dungeon-container">
-  <div class="slime">Slime</div>
-  <div class="slime">Slime</div>
-  <div class="slime">Slime</div>
+  <div *ngFor="let enemy of state.enemies" [style.color]="enemy.color">{{ enemy.name }}</div>
 
   <div class="darkness" [style.opacity]="state.darkness"></div>
 </div>

@@ -3,6 +3,16 @@ import { eAction } from '../enums/action.enum'
 import { StateManager } from '../services/state-manager'
 
 export class Warrior extends Action {
+  constructor() {
+    super();
+
+    this.id = 'warrior';
+    this.label = 'Warrior';
+    this.enabled = true;
+    this.visible = false
+    this.cooldown = 1000;
+  }
+
   execute(state: StateManager) {
     state._playerClass = 'warrior';
     state.level = 1;
