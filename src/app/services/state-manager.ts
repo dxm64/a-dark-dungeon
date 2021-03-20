@@ -11,6 +11,8 @@ import { Torch } from '../actions/torch.action';
 import { Warrior } from '../actions/warrior.action';
 import { eAction } from '../enums/action.enum';
 import { Log } from '../models/log.model';
+import Tween from '../models/tween.model';
+import { LerpService } from './lerp.service';
 import { TweeningService } from './tween.service';
 
 @Injectable({ providedIn: 'root' })
@@ -54,7 +56,6 @@ export class StateManager {
   ]
 
   darkness = 1.0;
-  darknessInterval: any;
 
   firstTorch = true;
 
@@ -74,7 +75,7 @@ export class StateManager {
     return this.stamina / this.maxStamina;
   }
 
-  constructor(private _tween: TweeningService) {
+  constructor(public _tween: TweeningService, public _lerp: LerpService) {
     this.gameLoop();
   }
 

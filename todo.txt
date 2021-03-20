@@ -3,6 +3,16 @@ Actual TASKS:
 - Save format as encoded base64 binary
 - REST disables other actions for some amount of time
 
+Combat:
+- You can only see what's in front of you, as a list of enemies / objects
+- Visibility constantly decreases, speed depends on type of torch, Light spell lasts longer than torches
+- As visibility decreases, it affects accuracy of attacks - if room is pitch black, you're attacking blind which is based on luck
+- If you hit something, enemy text will flash white-red for a bit
+- Which enemy and how many depends on weapon / type of attack
+- Swords: Short sword - faster, less range, fewer enemies affected; Long sword - slower, more range, more enemies affected
+- Daggers: Always one target, limited in quantity, meelee attacks are fast, but low damage
+- Spells: Some affect one enemy, some have an Area Of Effect that affects multiple (i.e. Poison cloud)
+
 Possible enemies:
 - Slime (green), variants: Big
 - Undead (dark purple), low visibility, variants: Undead Soldier/Mage
