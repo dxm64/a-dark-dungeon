@@ -1,9 +1,7 @@
 Actual TASKS:
-- hacktimer - so game can run in background
-- Tweens instead of intervals
-- Cooldown in milliseconds, rather than "speed"
 - Save/Load game state from localStorage
 - Save format as encoded base64 binary
+- REST disables other actions for some amount of time
 
 Possible enemies:
 - Slime (green), variants: Big

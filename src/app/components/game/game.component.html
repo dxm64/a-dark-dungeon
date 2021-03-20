@@ -18,7 +18,7 @@
             *ngIf="action.visible"
             style="margin: 60px;"
             [label]="action.label"
-            [cooldownSpeed]="action.cooldown"
+            [cooldownTime]="action.cooldown"
             [disabled]="!action.enabled"
             (clicked)="state.buttonPressed(action.id)">
           </app-button>

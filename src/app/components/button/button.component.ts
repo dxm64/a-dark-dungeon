@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LerpService } from 'src/app/services/lerp.service';
+import { TweeningService } from 'src/app/services/tween.service';
 
 @Component({
   selector: 'app-button',
@@ -9,35 +11,20 @@ export class ButtonComponent implements OnInit {
   @Input() id = 'Unknown'
   @Input() label = 'Label'
 
-  @Input() cooldownSpeed = 100;
-
-  cooldown = 0.0
-  cooldownInterval: any;
+  @Input() cooldownTime = 1000;
+  @Input() cooldown = 0.0
 
   @Input() disabled = false;
 
   @Output() clicked: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private _tween: TweeningService, private _lerp: LerpService) { }
 
   ngOnInit() {
   }
 
   startCooldown() {
-    this.cooldown = 1.0;
-
-    clearInterval(this.cooldownInterval);
-    this.cooldownInterval = setInterval(() => {
-      this.cooldown -= 0.01;
-      if (this.cooldown < 0.0) {
-        this.cooldown = 0.0;
-        this.stopCooldown();
-      }
-    }, 1000 / this.cooldownSpeed);
-  }
-
-  stopCooldown() {
-    clearInterval(this.cooldownInterval);
+    this._tween.start(1.0, 0.0, this.cooldownTime, (value) => { this.cooldown = value; }, this._lerp.noEase, () => {});
   }
 
   click() {
