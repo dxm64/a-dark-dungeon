@@ -1,13 +1,13 @@
-import { eActions, StateManager } from "../services/state-manager";
+import { StateManager } from "../services/state-manager";
 import { Action } from "./action";
 
 export class Stab extends Action {
   execute(state: StateManager) {
     if (state.stamina - 10 >= 0) {
-      state.stamina -= 5;
-      state.writeLog('You stab your dagger, but nothing\'s there.');
+      state.stamina -= 10;
+      state.writeLog('You stab with your dagger, but only hit the air.');
     } else {
-      state.writeLog('You wipe your sweat of your forehead.');
+      state.writeLog('Your body refuses to move from the fatigue.');
     }
   }
 

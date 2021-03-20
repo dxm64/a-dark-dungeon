@@ -10,20 +10,6 @@ import { Stab } from '../actions/stab.action';
 import { Torch } from '../actions/torch.action';
 import { Warrior } from '../actions/warrior.action';
 
-export enum eActions {
-  lightTorch = 0,
-
-  pickWarriorClass = 1,
-  pickRogueClass = 2,
-  pickMageClass = 3,
-
-  slash = 4,
-  stab = 5,
-  fireball = 6,
-  focus = 7,
-  rest = 8,
-}
-
 @Injectable({ providedIn: 'root' })
 export class StateManager {
   maxLogLines = 20;

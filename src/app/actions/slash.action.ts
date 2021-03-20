@@ -1,4 +1,4 @@
-import { eActions, StateManager } from "../services/state-manager";
+import { StateManager } from "../services/state-manager";
 import { Action } from "./action";
 
 export class Slash extends Action {

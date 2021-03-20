@@ -1,5 +1,5 @@
-import { eActions, StateManager } from "../services/state-manager";
 import { Action } from "./action";
+import { StateManager } from "../services/state-manager";
 
 export class Torch extends Action {
   execute(state: StateManager) {
