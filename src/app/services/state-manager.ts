@@ -1,3 +1,4 @@
+import { state } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { Action } from '../actions/action';
 import { Fireball } from '../actions/fireball.action';
@@ -9,6 +10,9 @@ import { Slash } from '../actions/slash.action';
 import { Stab } from '../actions/stab.action';
 import { Torch } from '../actions/torch.action';
 import { Warrior } from '../actions/warrior.action';
+import Arachnid from '../enemies/arachnid.enemy';
+import Bat from '../enemies/bat.enemy';
+import Cockroach from '../enemies/cockroach.enemy';
 import { Enemy } from '../enemies/enemy';
 import Slime from '../enemies/slime.enemy';
 import { eAction } from '../enums/action.enum';
@@ -58,11 +62,14 @@ export class StateManager {
     new Rest(),
   ]
 
+  enemyTypes = [{ id: 'slime', type: Slime }, { id: 'cockroach', type: Cockroach }, { id: 'bat', type: Bat }, { id: 'arachnid', type: Arachnid }]
   enemies: Enemy[] = [
     new Slime(),
-    new Slime(),
-    new Slime(),
+    new Cockroach(),
+    new Bat(),
+    new Arachnid(),
   ]
+
 
   darkness = 1.0;
 
@@ -95,6 +102,21 @@ export class StateManager {
 
       this.stamina = Math.min(this.stamina + this.staminaReplenishRate, this.maxStamina);
     }, framerate)
+
+    setInterval(() => {
+      if(this.enemies.length < 3) {
+        const spawnType = this.enemyTypes[Math.floor(Math.random() * this.enemyTypes.length)].type;
+        const enemy = new spawnType();
+
+        this.enemies.push(enemy);
+
+        if(this.darkness == 0.0) {
+          this.writeLog('You hear a noise in the dark.');
+        } else {
+          this.writeLog(`${enemy.name} appears in front of you.`);
+        }
+      }
+    }, 10000);
   }
 
   buttonPressed(id: string) {
